@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace ModulControlWork
 {
-    internal class SnakeZoo: IZooBase
+    internal class SnakeZoo: IZooBase, ILandZoo
     {
-        private const double AverageTemperature = 30;
+        private const double LandTemperature = 30;
         private const double Width = 2;
         private const double Length = 2;
+
+        public SnakeZoo()
+        {
+            
+        }
 
         public override double CalculateArea()
         {
@@ -24,12 +29,17 @@ namespace ModulControlWork
 
         public override string GetDimensions()
         {
-            return $"Width: {Width}, Length: {Length}";
+            return $"Ширина: {Width}, Довжина: {Length}";
         }
 
         public override double GetTemperature()
         {
-            return AverageTemperature;
+            return LandTemperature;
+        }
+
+        public double GetLandTemperature()
+        {
+            return LandTemperature;
         }
     }
 }

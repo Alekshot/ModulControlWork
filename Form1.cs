@@ -56,26 +56,29 @@ namespace ModulControlWork
 
             // Створюємо таблицю для DataGridView
             DataTable table = new DataTable();
-            table.Columns.Add("Animal", typeof(string));
-            table.Columns.Add("Area", typeof(double));
-            table.Columns.Add("Volume", typeof(double));
-            //table.Columns.Add("Dimensions", typeof(string));
-            table.Columns.Add("Temperature", typeof(double));
+            table.Columns.Add("Тварина", typeof(string));
+            table.Columns.Add("Площа", typeof(double));
+            table.Columns.Add("Об'єм", typeof(double));
+            table.Columns.Add("Розмірність", typeof(string));
+            table.Columns.Add("Температура", typeof(double));
 
             // Додаємо дані до таблиці
             foreach (var enclosure in enclosures)
             {
+                string dimensions = enclosure.GetDimensions();
                 double temperature = enclosure.GetTemperature();
 
-                table.Rows.Add(enclosure.GetType().Name, enclosure.CalculateArea(), enclosure.CalculateVolume(), temperature);
+                table.Rows.Add(enclosure.GetType().Name, enclosure.CalculateArea(), enclosure.CalculateVolume(), dimensions, temperature);
             }
 
             // Виводимо дані в DataGridView
             dataGridView1.DataSource = table;
 
+            dataGridView1.Columns["Розмірність"].Width = 150;
+
             // Виводимо сумарну площу та об'єм
-            label1.Text = $"Total Area: {zooPlanner.CalculateTotalArea()} square meters";
-            label2.Text = $"Total Volume: {zooPlanner.CalculateTotalVolume()} cubic meters";
+            label5.Text = $"Загальна площа: {zooPlanner.CalculateTotalArea()}";
+            label6.Text = $"Загальний об'єм : {zooPlanner.CalculateTotalVolume()}";
         }
     }
 }

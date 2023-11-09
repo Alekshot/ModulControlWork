@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace ModulControlWork
 {
-    internal class TurtleZoo: IZooBase
+    internal class TurtleZoo: IZooBase, IWaterZoo
     {
         private const double WaterTemperature = 25;
         private const double Width = 5;
         private const double Length = 6;
+
+        public TurtleZoo()
+        {
+
+        }
 
         public override double CalculateArea()
         {
@@ -19,12 +24,12 @@ namespace ModulControlWork
 
         public override double CalculateVolume()
         {
-            // Assuming the enclosure is filled with water
+            
             return CalculateArea() * 1.2;
         }
         public override string GetDimensions()
         {
-            return $"Width: {Width}, Length: {Length}";
+            return $"Ширина: {Width}, Довжина: {Length}";
         }
 
         public override double GetTemperature()

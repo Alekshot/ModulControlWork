@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModulControlWork
 {
-    internal class ChameleonZoo: IZooBase
+    internal class ChameleonZoo: IZooBase, ILandZoo, IWaterZoo
     {
         private const double LandTemperature = 35;
         private const double WaterTemperature = 20;
@@ -15,25 +15,30 @@ namespace ModulControlWork
         private const double WaterWidth = 1;
         private const double WaterLength = 15;
 
+        public ChameleonZoo()
+        {
+
+        }
+
         public override double CalculateArea()
         {
-            // Assuming the enclosure includes both land and water
+            
             return LandWidth * LandLength + WaterWidth * WaterLength;
         }
 
         public override double CalculateVolume()
         {
-            // Assuming the enclosure includes both land and water
+            
             return CalculateArea() * 1.5;
         }
         public override string GetDimensions()
         {
-            return $"Land: Width: {LandWidth}, Length: {LandLength} | Water: Width: {WaterWidth}, Length: {WaterLength}";
+            return $"Суша: {LandWidth}, {LandLength} | Вода: {WaterWidth}, {WaterLength}";
         }
 
         public override double GetTemperature()
         {
-            // Assuming the temperature is an average of land and water temperatures
+            
             return (LandTemperature + WaterTemperature) / 2;
         }
 
